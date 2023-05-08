@@ -1,12 +1,12 @@
 package app;
 
-import java.util.Scanner;
+import org.slf4j.LoggerFactory;
 
-import javax.naming.InvalidNameException;
-
-import exceptions.NumberLessThanZeroException;
+import ch.qos.logback.classic.Logger;
 
 public class Application {
+
+	private static Logger logger = (Logger) LoggerFactory.getLogger(Application.class);
 
 	public static void main(String[] args) {
 		print("CIAO");
@@ -42,20 +42,20 @@ public class Application {
 //			System.out.println("C'è stato un errore generico!");
 //		}
 
-		Scanner in = new Scanner(System.in);
-		try {
-			System.out.println("Dammi il primo numero");
-			int a = Integer.parseInt(in.nextLine());
-			System.out.println("Dammi il secondo numero");
-			int b = Integer.parseInt(in.nextLine());
-			System.out.println(a + b);
-
-		} catch (NumberFormatException e) {
-			// TODO: handle exception
-			System.out.println("No bueno!");
-		} finally {
-			in.close();
-		}
+//		Scanner in = new Scanner(System.in);
+//		try {
+//			System.out.println("Dammi il primo numero");
+//			int a = Integer.parseInt(in.nextLine());
+//			System.out.println("Dammi il secondo numero");
+//			int b = Integer.parseInt(in.nextLine());
+//			System.out.println(a + b);
+//
+//		} catch (NumberFormatException e) {
+//			// TODO: handle exception
+//			System.out.println("No bueno!");
+//		} finally {
+//			in.close();
+//		}
 
 		// ************************ CUSTOM UNCHECKED EXCEPTION ************************
 
@@ -71,16 +71,23 @@ public class Application {
 //			System.out.println(e.getMessage());
 //		}
 
-		try {
-			Rectangle r = new Rectangle(10, -10);
-			// r.calc();
-			r.setName("Bl");
+//		try {
+//			Rectangle r = new Rectangle(10, -10);
+//			// r.calc();
+//			r.setName("Bl");
+//
+//		} catch (NumberLessThanZeroException e) {
+//			System.out.println(e.getMessage());
+//		} catch (InvalidNameException e) {
+//			System.out.println(e.getMessage());
+//		}
 
-		} catch (NumberLessThanZeroException e) {
-			System.out.println(e.getMessage());
-		} catch (InvalidNameException e) {
-			System.out.println(e.getMessage());
-		}
+		// ************************* LOGBACK EXAMPLES ********************
+
+		logger.info("Ciao");
+		logger.warn("Ciao");
+		logger.error("Ciao");
+		System.out.println("Ciao");
 
 
 	}
